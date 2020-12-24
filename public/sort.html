@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SortVision</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css" integrity="sha512-ZRv40llEogRmoWgZwnsqke3HNzJ0kiI0+pcMgiz2bxO6Ew1DVBtWjVn0qjrXdT3+u+pSN36gLgmJiiQ3cQtyzA==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/index.html">
+            <p><span class="math display">SortVision</span></p>
+            </a>
+
+            <a role="button" class="navbar-burger burger" id = "burger1" aria-label="menu" aria-expanded="false" data-target="navbarLinks">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarLinks" class="navbar-menu">
+            <div class="navbar-end">
+                <a class="navbar-item is-active" id = "bSortBtn">
+                Bubble Sort
+                </a>
+
+                <a class="navbar-item" id = "sSortBtn">
+                    Selection Sort
+                </a>
+    
+                <a class="navbar-item" id = "mSortBtn">
+                Merge Sort
+                </a>
+
+                <a class="navbar-item" id = "iSortBtn">
+                Insertion Sort
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                    Other resources
+                    </a>
+
+                    <div class="navbar-dropdown" id= "wikiBtn">
+                        <a class="navbar-item" href="https://en.wikipedia.org/wiki/Sorting_algorithm" target="_blank">
+                        Wikipedia
+                        </a>
+                        <a class="navbar-item id" id= "contactBtn" target="_blank" href="https://www.github.com/asrivastava100">
+                        Contact
+                        </a>
+                        <hr class="navbar-divider" id = "issueBtn">
+                        <a class="navbar-item" target="_blank" href="https://www.github.com/asrivastava100">
+                        Report an issue
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div class = "sliderContainer mt-1">
+        <div>
+            <span class="px-3">Animation:</span>
+            <input type="range" min="0" max="100" value="10" class="slider" id="animSlider">
+            <span class = "is-size-7 pr-3" id="outputAnimVal"></span>
+        </div>
+        <div>
+            <span class="px-3">Speed:</span>
+            <input type="range" min="0" max="4" value="2" class="slider" id="speedSlider">
+            <span class = "is-size-7 pr-3" id="outputSpeedVal"></span>
+        </div>
+        
+        <div >
+            <span class="px-3">Array size: </span>
+            <input type="range" min="2" max="150" value="30" class="slider" id="arraySize">
+            <span class = "is-size-7" id="outputSlVal"></span>
+        </div>
+    </div>
+    
+    <canvas id="outputChart"></canvas>
+    <div id = "bSortInfo" class = "">
+        <p class = "subtitle px-3 mt-3"> Running time complexity analysis</p>
+        <li class = "px-6 pb-3">The Bubble Sort algorithm has a worst case running time of O(n<sup>2</sup>), where n is the size of the
+            array. 
+        </li>
+        <li class = "px-6 pb-3">It has a best case running time of O(n), where n is the size of the
+            array. This occurs when the array is already sorted. 
+        </li>
+        <li class = "px-6 mb-3">The space complexity of Bubble Sort is constant - O(1)</li>
+    
+    </div>
+    <div id = "sSortInfo" class = "is-hidden">
+        <p class = "subtitle px-3 mt-3"> Running time complexity analysis</p>
+        <li class = "px-6 pb-3">The Selection Sort algorithm has a worst case running time of O(n<sup>2</sup>), where n is the size of the
+            array. 
+        </li>
+        
+        <li class = "px-6 mb-3">The space complexity of Selection Sort is constant - O(1)</li>
+    </div>
+
+    <div id="mSortInfo" class ="is-hidden">
+        <p class = "subtitle px-3 mt-3"> Running time complexity analysis</p>
+        <li class = "px-6 pb-3">The Merge Sort algorithm has a worst case running time of O(nlogn), where n is the size of the
+            array. 
+        </li>
+        <li class = "px-6 pb-3">It has a best case running time is also O(nlogn), where n is the size of the
+            array. 
+        </li>
+        <li class = "px-6 pb-3">The space complexity of conventional Merge Sort is linear - O(n)</li>
+        <li class = "px-6 pb-3">We should note that there is an In-place Merge Sort algorithm
+            which has constant space complexity - O(1). Too good to be true? One of the implementations of In-place Merge Sort has a 
+            worst case running time of O(nlog<sup>2</sup>n) 
+        </li>
+        <li class = "px-6 pb-3">There are many implementations for In-place merge sort and care must be taken when
+            choosing an implementation as there are other factors to consider. The reader is welcome to look at the other resources
+            tab above.
+        </li>
+        
+        <li class = "px-6 mb-3"> Overall which implementation one chooses depends on the particular preferences i.e. 
+        optimising space over performance (In-place) or the other way around (Merge Sort with temporary array).
+        </li>
+    
+    </div>
+
+    <div id = "iSortInfo" class = "is-hidden">
+        <p class = "subtitle px-3 mt-3"> Running time complexity analysis</p>
+        <li class = "px-6 pb-3">The Insertion Sort algorithm has a worst case running time of O(n<sup>2</sup>), where n is the size of the
+            array. 
+        </li>
+        <li class = "px-6 pb-3">It has a best case running time of O(n), where n is the size of the
+            array. This occurs when the array is already sorted. 
+        </li>
+        <li class = "px-6 mb-3">The space complexity of Insertion Sort is constant - O(1)</li>
+    
+    </div>
+    <footer class = "customFooter">
+        &copy; Copyright 2020 Anuj S.
+    </footer>
+    
+</body>
+<script src="frontEndFns.js"></script>
+<script src="SortFns.js"></script>
+
+</html>

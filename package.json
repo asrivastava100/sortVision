@@ -1,0 +1,19 @@
+{
+  "name": "sorting_visualisation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index",
+    "start": "node index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "helmet": "^4.2.0",
+    "install": "^0.13.0",
+    "nodemon": "^2.0.6"
+  }
+}
